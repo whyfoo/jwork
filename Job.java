@@ -27,42 +27,42 @@ public class Job
      * @param  y  a sample parameter for a method
      * @return    the sum of x and y
      */
-    public static int getId()
+    public int getId()
     {
         return 0;
     }
     
-    public static String getName()
+    public String getName()
     {
         return "oop";
     }
     
-    public static int getFee()
+    public int getFee()
     {
         return 0;
     }
     
-    public static String getCategory()
+    public String getCategory()
     {
         return "oop";
     }
     
-    public static void setId(int id)
+    public void setId(int id)
     {
     
     }
     
-    public static void setName(String name)
+    public void setName(String name)
     {
     
     }
     
-    public static void setFee(int fee)
+    public void setFee(int fee)
     {
     
     }
     
-    public static void setCategory(String category)
+    public void setCategory(String category)
     {
     
     }

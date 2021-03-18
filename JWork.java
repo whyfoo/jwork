@@ -7,16 +7,6 @@
  */
 public class JWork
 {
-    // instance variables - replace the example below with your own
-    
-    /**
-     * Constructor for objects of class JWork
-     */
-    public JWork()
-    {
-        // initialise instance variables
-        
-    }
 
     /**
      * An example of a method - replace this comment with your own
@@ -24,7 +14,7 @@ public class JWork
      * @param  y  a sample parameter for a method
      * @return    the sum of x and y
      */
-    public static void main (String[] args)
+    public void main (String[] args)
     {
 
     }

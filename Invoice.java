@@ -27,42 +27,42 @@ public class Invoice
      * @param  y  a sample parameter for a method
      * @return    the sum of x and y
      */
-    public static int getId()
+    public int getId()
     {
         return 0;
     }
     
-    public static int getIdJob()
+    public int getIdJob()
     {
         return 0;
     }
     
-    public static String getDate()
+    public String getDate()
     {
         return "oop";
     }
     
-    public static int getTotalFee()
+    public int getTotalFee()
     {
         return 0;
     }
     
-    public static void setId(int id)
+    public void setId(int id)
     {
     
     }
     
-    public static void setIdJobs(int idJobs)
+    public void setIdJobs(int idJobs)
     {
     
     }
     
-    public static void setDate(String date)
+    public void setDate(String date)
     {
     
     }
     
-    public static void setTotalFee(int totalFee)
+    public void setTotalFee(int totalFee)
     {
     
     }
