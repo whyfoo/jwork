@@ -3,7 +3,7 @@
  * Jobseeker adalah kelas yang berisi data jobseeker
  *
  * @author Haidar Hanif
- * @version 18-03-2021
+ * @version 20-03-2021
  */
 public class Jobseeker
 {
