@@ -129,6 +129,6 @@ public class Job
      * metode untuk mencetak data
      */
     public void printData(){
-        
+        System.out.println(name);
     }
 }

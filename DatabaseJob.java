@@ -10,7 +10,7 @@ public class DatabaseJob
     private String[] listJob;
     
     /**
-     * Constructor untuk Location
+     * Constructor untuk DatabaseJob
      */
     public DatabaseJob()
     {

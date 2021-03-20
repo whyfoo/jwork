@@ -129,6 +129,6 @@ public class Invoice
      * metode untuk mencetak data
      */
     public void printData(){
-        
+        System.out.println(totalFee);
     }
 }
