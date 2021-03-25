@@ -3,7 +3,7 @@
  * Class of Recruiter
  *
  * @author Haidar Hanif
- * @version 20-03-2021
+ * @version 25-03-2021
  */
 public class Recruiter
 {

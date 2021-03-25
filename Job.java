@@ -3,7 +3,7 @@
  * Class of Job
  *
  * @author Haidar Hanif
- * @version 20-03-2021
+ * @version 25-03-2021
  */
 public class Job
 {
@@ -11,12 +11,12 @@ public class Job
     private String name;
     private Recruiter recruiter;
     private int fee;
-    private String category;
+    private JobCategory category;
     
      /**
      * Constructor untuk Job
      */
-    public Job(int id, String name, Recruiter recruiter, int fee, String category)
+    public Job(int id, String name, Recruiter recruiter, int fee, JobCategory category)
     {
         this.id = id;
         this.name = name;
@@ -60,7 +60,7 @@ public class Job
      *
      * @return    category dari job
      */
-    public String getCategory()
+    public JobCategory getCategory()
     {
         return category;
     }
@@ -120,7 +120,7 @@ public class Job
      *
      * @param  category  parameter untuk mengganti data category
      */
-    public void setCategory(String category)
+    public void setCategory(JobCategory category)
     {
         this.category = category;
     }
@@ -129,6 +129,12 @@ public class Job
      * metode untuk mencetak data
      */
     public void printData(){
-        System.out.println(name);
+        System.out.println("=====================JOB=====================");
+        System.out.println("ID: " + id);
+        System.out.println("Name: " + name);
+        System.out.println("Recruiter: " + recruiter.getName());
+        System.out.println("City: " + recruiter.getLocation().getCity());
+        System.out.println("Fee: " + fee);
+        System.out.println("Category: " + category.toString());
     }
 }

@@ -3,25 +3,18 @@
  * Class of DatabaseJob
  *
  * @author Haidar Hanif
- * @version 20-03-2021
+ * @version 25-03-2021
  */
 public class DatabaseJob
 {
-    private String[] listJob;
-    
-    /**
-     * Constructor untuk DatabaseJob
-     */
-    public DatabaseJob()
-    {
-    }
+    private static String[] listJob;
     
     /**
      * metode untuk menambah job
      *
      * @return    false
      */
-    public boolean addJob(Job job)
+    public static boolean addJob(Job job)
     {
         return false;
     }
@@ -31,7 +24,7 @@ public class DatabaseJob
      *
      * @return    false
      */
-    public boolean removeJob(Job job)
+    public static boolean removeJob(Job job)
     {
         return false;
     }
@@ -41,7 +34,7 @@ public class DatabaseJob
      *
      * @return    null
      */
-    public Job getJob()
+    public static Job getJob()
     {
         return null;
     }
@@ -51,7 +44,7 @@ public class DatabaseJob
      *
      * @return    null
      */
-    public String[] getListJob()
+    public static String[] getListJob()
     {
         return null;
     }

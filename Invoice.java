@@ -2,7 +2,7 @@
  * Class of Invoice
  *
  * @author Haidar Hanif
- * @version 20-03-2020
+ * @version 25-03-2020
  */
 public class Invoice
 {

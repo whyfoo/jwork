@@ -3,25 +3,19 @@
  * Write a description of class DataRecruiter here.
  *
  * @author Haidar Hanif
- * @version 20-03-2021
+ * @version 25-03-2021
  */
 public class DatabaseRecruiter
 {
-    private String[] listRecruiter;
+    private static String[] listRecruiter;
     
-    /**
-     * Constructor untuk Location
-     */
-    public DatabaseRecruiter()
-    {
-    }
     
     /**
      * metode untuk menambah recruiter
      *
      * @return    false
      */
-    public boolean addRecruiter(Recruiter recruiter)
+    public static boolean addRecruiter(Recruiter recruiter)
     {
         return false;
     }
@@ -31,7 +25,7 @@ public class DatabaseRecruiter
      *
      * @return    false
      */
-    public boolean removeRecruiter(Recruiter recruiter)
+    public static boolean removeRecruiter(Recruiter recruiter)
     {
         return false;
     }
@@ -41,7 +35,7 @@ public class DatabaseRecruiter
      *
      * @return    null
      */
-    public Recruiter getRecruiter()
+    public static Recruiter getRecruiter()
     {
         return null;
     }
@@ -51,7 +45,7 @@ public class DatabaseRecruiter
      *
      * @return    null
      */
-    public String[] getListRecruiter()
+    public static String[] getListRecruiter()
     {
         return null;
     }
