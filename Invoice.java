@@ -2,7 +2,7 @@
  * Class of Invoice
  *
  * @author Haidar Hanif
- * @version 25-03-2020
+ * @version 27-03-2020
  */
 public class Invoice
 {
@@ -12,17 +12,21 @@ public class Invoice
     private String date;
     private int totalFee;
     private Jobseeker jobseeker;
+    private PaymentType paymentType;
+    private InvoiceStatus status;
 
     /**
      * Constructor untuk Invoice
      */
-    public Invoice(int id, int idJob, String date, int totalFee, Jobseeker jobseeker)
+    public Invoice(int id, int idJob, String date, int totalFee, Jobseeker jobseeker, PaymentType paymentType, InvoiceStatus status)
     {
         this.id = id;
         this.idJob = idJob;
         this.date = date;
         this.totalFee = totalFee;
         this.jobseeker = jobseeker;
+        this.paymentType = paymentType;
+        this.status = status;
     }
         
     /**
@@ -75,6 +79,26 @@ public class Invoice
         return jobseeker;
     }
     
+            /**
+     * getter untuk mengambil data tipe payment
+     *
+     * @return    tipe payment pada invoice
+     */
+    public PaymentType getPaymentType()
+    {
+        return paymentType;
+    }
+    
+            /**
+     * getter untuk mengambil data status invoice
+     *
+     * @return    Status pada invoice
+     */
+    public InvoiceStatus getInvoiceStatus()
+    {
+        return status;
+    }
+    
         /**
      * setter untuk mengatur nilai id
      *
@@ -125,10 +149,36 @@ public class Invoice
         this.jobseeker = jobseeker;
     }
     
+            /**
+     * setter untuk mengatur data paymentType
+     *
+     * @param  paymentType  parameter untuk mengganti paymentType
+     */
+    public void setPaymentType(PaymentType paymentType)
+    {
+        this.paymentType = paymentType;
+    }
+    
+            /**
+     * setter untuk mengatur data paymentType
+     *
+     * @param  paymentType  parameter untuk mengganti paymentType
+     */
+    public void setInvoiceStatus(InvoiceStatus status)
+    {
+        this.status = status;
+    }
+    
         /**
      * metode untuk mencetak data
      */
     public void printData(){
-        System.out.println(totalFee);
+        System.out.println("===================== INVOICE =====================");
+        System.out.println("ID: " + id);
+        System.out.println("ID Job: " + idJob);
+        System.out.println("Date: " + date);
+        System.out.println("Seeker: " + jobseeker.getName());
+        System.out.println("Fee: " + totalFee);
+        System.out.println("Status: " + status.toString());
     }
 }
