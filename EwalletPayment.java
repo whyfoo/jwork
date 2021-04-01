@@ -62,9 +62,10 @@ public class EwalletPayment extends Invoice
      * setter untuk mengatur nilai total fee
      *
      */
+    @Override
     public void setTotalFee()
     {
-        if (bonus!=null && bonus.getActive() && totalFee > bonus.getMinTotalFee()) {
+        if (bonus!=null && bonus.getActive() && getJob().getFee() > bonus.getMinTotalFee()) {
             super.totalFee = super.getJob().getFee() + bonus.getExtraFee();
         }
         else {
@@ -83,7 +84,7 @@ public class EwalletPayment extends Invoice
         System.out.println("Date: " + getDate());
         System.out.println("Job Seeker: " + getJobseeker().getName());
         
-        if (bonus!=null && bonus.getActive() && totalFee > bonus.getMinTotalFee()) {
+        if (bonus!=null && bonus.getActive() && totalFee >= bonus.getMinTotalFee()) {
             System.out.println("Referral Code: " + bonus.getReferralCode());
         }
         
