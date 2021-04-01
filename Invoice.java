@@ -2,31 +2,28 @@
  * Class of Invoice
  *
  * @author Haidar Hanif
- * @version 27-03-2020
+ * @version 1-04-2020
  */
-public class Invoice
+public abstract class Invoice
 {
     // instance variables - replace the example below with your own
     private int id;
-    private int idJob;
+    private Job job;
     private String date;
-    private int totalFee;
+    protected int totalFee;
     private Jobseeker jobseeker;
-    private PaymentType paymentType;
-    private InvoiceStatus status;
+    private InvoiceStatus invoiceStatus;
 
     /**
      * Constructor untuk Invoice
      */
-    public Invoice(int id, int idJob, String date, int totalFee, Jobseeker jobseeker, PaymentType paymentType, InvoiceStatus status)
+    public Invoice(int id, Job job, String date, Jobseeker jobseeker, InvoiceStatus invoiceStatus)
     {
         this.id = id;
-        this.idJob = idJob;
+        this.job = job;
         this.date = date;
-        this.totalFee = totalFee;
         this.jobseeker = jobseeker;
-        this.paymentType = paymentType;
-        this.status = status;
+        this.invoiceStatus = invoiceStatus;
     }
         
     /**
@@ -44,9 +41,9 @@ public class Invoice
      *
      * @return    idJob pada invoice
      */
-    public int getIdJob()
+    public Job getJob()
     {
-        return idJob;
+        return job;
     }
     
         /**
@@ -80,14 +77,10 @@ public class Invoice
     }
     
             /**
-     * getter untuk mengambil data tipe payment
+     * abstract getPaymentType untuk mengambil data tipe payment
      *
-     * @return    tipe payment pada invoice
      */
-    public PaymentType getPaymentType()
-    {
-        return paymentType;
-    }
+    public abstract PaymentType getPaymentType();
     
             /**
      * getter untuk mengambil data status invoice
@@ -96,7 +89,7 @@ public class Invoice
      */
     public InvoiceStatus getInvoiceStatus()
     {
-        return status;
+        return invoiceStatus;
     }
     
         /**
@@ -110,13 +103,13 @@ public class Invoice
     }
     
             /**
-     * setter untuk mengatur nilai idJob
+     * setter untuk mengatur nilai job
      *
-     * @param  idJob  parameter untuk mengganti idJob
+     * @param  job  parameter untuk mengganti job
      */
-    public void setIdJob(int idJob)
+    public void setJob(Job job)
     {
-        this.idJob = idJob;
+        this.job = job;
     }
     
             /**
@@ -134,10 +127,7 @@ public class Invoice
      *
      * @param  totalFee  parameter untuk mengganti total fee
      */
-    public void setTotalFee(int totalFee)
-    {
-        this.totalFee = totalFee;
-    }
+    public abstract void setTotalFee();
     
             /**
      * setter untuk mengatur data jobseeker
@@ -154,31 +144,20 @@ public class Invoice
      *
      * @param  paymentType  parameter untuk mengganti paymentType
      */
-    public void setPaymentType(PaymentType paymentType)
+    public void setInvoiceStatus(InvoiceStatus invoiceStatus)
     {
-        this.paymentType = paymentType;
-    }
-    
-            /**
-     * setter untuk mengatur data paymentType
-     *
-     * @param  paymentType  parameter untuk mengganti paymentType
-     */
-    public void setInvoiceStatus(InvoiceStatus status)
-    {
-        this.status = status;
+        this.invoiceStatus = invoiceStatus;
     }
     
         /**
      * metode untuk mencetak data
      */
-    public void printData(){
-        System.out.println("===================== INVOICE =====================");
-        System.out.println("ID: " + id);
-        System.out.println("ID Job: " + idJob);
-        System.out.println("Date: " + date);
-        System.out.println("Seeker: " + jobseeker.getName());
-        System.out.println("Fee: " + totalFee);
-        System.out.println("Status: " + status.toString());
-    }
+    public abstract void printData();
+        //System.out.println("===================== INVOICE =====================");
+        //System.out.println("ID: " + id);
+        //System.out.println("ID Job: " + idJob);
+        //System.out.println("Date: " + date);
+        //System.out.println("Seeker: " + jobseeker.getName());
+        //System.out.println("Fee: " + totalFee);
+        //System.out.println("Status: " + status.toString());
 }
