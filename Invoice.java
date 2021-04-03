@@ -2,9 +2,9 @@
  * Class of Invoice
  *
  * @author Haidar Hanif
- * @version 1-04-2020
+ * @version 3-04-2021
  */
-public abstract class Invoice
+abstract class Invoice
 {
     // instance variables - replace the example below with your own
     private int id;

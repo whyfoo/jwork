@@ -3,7 +3,7 @@
  * Class of JWork
  *
  * @author Haidar Hanif
- * @version 1-04-2021
+ * @version 3-04-2021
  */
 public class JWork
 {
@@ -28,11 +28,5 @@ public class JWork
         pertama.printData();
         kedua.printData();
         ketiga.printData();
-        
-        //System.out.println(InvoiceStatus.Ongoing.toString());
-        //System.out.println(InvoiceStatus.Finished.toString());
-        //System.out.println(InvoiceStatus.Cancelled.toString());
-        
-        //inv1.printData();
     }
 }

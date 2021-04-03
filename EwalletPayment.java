@@ -3,7 +3,7 @@
  * subclass EwalletPayment
  *
  * @author Haidar Hanif
- * @version 1-04-2020
+ * @version 1-04-2021
  */
 public class EwalletPayment extends Invoice
 {
@@ -66,10 +66,10 @@ public class EwalletPayment extends Invoice
     public void setTotalFee()
     {
         if (bonus!=null && bonus.getActive() && getJob().getFee() > bonus.getMinTotalFee()) {
-            super.totalFee = super.getJob().getFee() + bonus.getExtraFee();
+            totalFee = getJob().getFee() + bonus.getExtraFee();
         }
         else {
-            super.totalFee = super.getJob().getFee();
+            totalFee = getJob().getFee();
         }
     }
     
@@ -88,7 +88,7 @@ public class EwalletPayment extends Invoice
             System.out.println("Referral Code: " + bonus.getReferralCode());
         }
         
-        System.out.println("Fee: " + super.totalFee);
+        System.out.println("Fee: " + totalFee);
         System.out.println("Status: " + getInvoiceStatus().toString());
         System.out.println("Payment Type: " + PAYMENT_TYPE);
     }
