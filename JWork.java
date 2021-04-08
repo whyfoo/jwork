@@ -12,7 +12,7 @@ public class JWork
     public static void main (String[] args)
     {
         Jobseeker pertama = new Jobseeker(707070, "Haidarh", ".haidarh@ui.ac.id", "pass", new GregorianCalendar(2021,8,4));
-        Jobseeker kedua = new Jobseeker(707070, "Haidarh", "haidarh@ui.ac.id", "Password1", new GregorianCalendar(2021,8,4));
+        Jobseeker kedua = new Jobseeker(707070, "Haidarh", "haidarh@ui.ac.id", "Password1", 2021, 8 ,4);
         Jobseeker ketiga = new Jobseeker(707070, "Haidarh", "terserah", "terserah");
         
         System.out.println(pertama.toString());
