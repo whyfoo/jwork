@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat;
  * Jobseeker adalah kelas yang berisi data jobseeker
  *
  * @author Haidar Hanif
- * @version 8-04-2021
+ * @version 08-04-2021
  */
 public class Jobseeker
 {
@@ -39,7 +39,7 @@ public class Jobseeker
         this.joinDate = new GregorianCalendar(year, month, dayOfMonth);
     }
     
-        public Jobseeker(int id, String name, String email, String password)
+    public Jobseeker(int id, String name, String email, String password)
     {
         this.id = id;
         this.name = name;
@@ -129,7 +129,6 @@ public class Jobseeker
             this.email = email;
         }
         else {
-            System.out.println("Format email salah");
             this.email = "";
         }
     }
@@ -141,12 +140,11 @@ public class Jobseeker
      */
     public void setPassword(String password)
     {
-        String passRegex = "^([A-Z]+[a-z]+[0-9]+){6,}$";
+        String passRegex = "(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{6,}";
         if (Pattern.matches(passRegex, password)){
             this.password = password;
         }
         else {
-            System.out.println("Format password salah");
             this.password = "";
         }
     }
@@ -176,11 +174,19 @@ public class Jobseeker
      */
     public String toString(){
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy");
-        return  "\nID = " + id +
+        if (joinDate != null){
+            return  "\nID = " + id +
                 "\nNama = " + name +
                 "\nEmail = " + email +
                 "\nPassword = " + password +
                 "\nJoin Date = " + dateFormat.format(joinDate.getTime());
+        }
+        else {
+                return  "\nID = " + id +
+                "\nNama = " + name +
+                "\nEmail = " + email +
+                "\nPassword = " + password;
+            }
                 
     }
 }
