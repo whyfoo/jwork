@@ -1,9 +1,13 @@
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.regex.*;
+import java.text.SimpleDateFormat;
 
 /**
  * Jobseeker adalah kelas yang berisi data jobseeker
  *
  * @author Haidar Hanif
- * @version 25-03-2021
+ * @version 8-04-2021
  */
 public class Jobseeker
 {
@@ -12,18 +16,35 @@ public class Jobseeker
     private String name;
     private String email;
     private String password;
-    private String joinDate;
+    private Calendar joinDate;
     
     /**
      * Constructor untuk Jobseeker
      */
-    public Jobseeker(int id, String name, String email, String password, String joinDate)
+    public Jobseeker(int id, String name, String email, String password, Calendar joinDate)
     {
         this.id = id;
         this.name = name;
-        this.email = email;
-        this.password = password;
+        setEmail(email);
+        setPassword(password);
         this.joinDate = joinDate;
+    }
+    
+    public Jobseeker(int id, String name, String email, String password, int year, int month, int dayOfMonth)
+    {
+        this.id = id;
+        this.name = name;
+        setEmail(email);
+        setPassword(password);
+        this.joinDate = new GregorianCalendar(year, month, dayOfMonth);
+    }
+    
+        public Jobseeker(int id, String name, String email, String password)
+    {
+        this.id = id;
+        this.name = name;
+        setEmail(email);
+        setPassword(password);
     }
     
     /**
@@ -71,7 +92,7 @@ public class Jobseeker
      *
      * @return    join date dari jobseeker
      */
-    public String getJoinDate()
+    public Calendar getJoinDate()
     {
         return joinDate;
     }
@@ -103,7 +124,14 @@ public class Jobseeker
      */
     public void setEmail(String email)
     {
-        this.email = email;
+        String emailRegex = "^[\\w&*_~]+(\\.?[\\w&*_~]+)*@[^-][\\w\\-\\.]+$";
+        if (Pattern.matches(emailRegex, email)){
+            this.email = email;
+        }
+        else {
+            System.out.println("Format email salah");
+            this.email = "";
+        }
     }
     
         /**
@@ -113,23 +141,46 @@ public class Jobseeker
      */
     public void setPassword(String password)
     {
-        this.password = password;
+        String passRegex = "^([A-Z]+[a-z]+[0-9]+){6,}$";
+        if (Pattern.matches(passRegex, password)){
+            this.password = password;
+        }
+        else {
+            System.out.println("Format password salah");
+            this.password = "";
+        }
     }
     
         /**
      * setter untuk mengatur nilai joinDate
      *
-     * @param  joinDate parameter untuk mengganti join date
+     * @param  joinDate parameter untuk mengganti join date (tipe calendar)
      */
-    public void setJoinDate(String joinDate)
+    public void setJoinDate(Calendar joinDate)
     {
         this.joinDate = joinDate;
+    }
+    
+            /**
+     * setter untuk mengatur nilai joinDate
+     *
+     * @param  joinDate parameter untuk mengganti join date (masukan d-m-y)
+     */
+    public void setJoinDate(int year, int month, int dayOfMonth)
+    {
+        joinDate.set(year, month, dayOfMonth);
     }
     
     /**
      * metode untuk mencetak data
      */
-    public void printData(){
-        System.out.println(name);
+    public String toString(){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy");
+        return  "\nID = " + id +
+                "\nNama = " + name +
+                "\nEmail = " + email +
+                "\nPassword = " + password +
+                "\nJoin Date = " + dateFormat.format(joinDate.getTime());
+                
     }
 }

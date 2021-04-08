@@ -9,7 +9,7 @@ public class BankPayment extends Invoice
 {
     private static final PaymentType PAYMENT_TYPE = PaymentType.BankPayment;
     private int adminFee;
-
+    
     /**
      * Constructor for objects of class EwallletPayment
      */
@@ -65,7 +65,7 @@ public class BankPayment extends Invoice
     @Override
     public void setTotalFee()
     {
-        if (adminFee > 0) {
+        if (adminFee != 0) {
             totalFee = getJob().getFee() - adminFee;
         }
         else {

@@ -3,7 +3,7 @@
  * Class of Location
  *
  * @author Haidar Hanif
- * @version 25-03-2021
+ * @version 8-04-2021
  */
 public class Location
 {
@@ -84,7 +84,9 @@ public class Location
             /**
      * metode untuk mencetak data
      */
-    public void printData(){
-        System.out.println(province);
+    public String toString(){
+        return  "\nProvince = " + province +
+                "\nCity = " + city +
+                "\nDescription = " + description;
     }
 }

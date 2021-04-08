@@ -128,7 +128,11 @@ public class Recruiter
         /**
      * metode untuk mencetak data
      */
-    public void printData(){
-        System.out.println(name);
+        public String toString(){
+        return  "\nId = " + id +
+                "\nNama = " + name +
+                "\nPhoneNumber = " + phoneNumber +
+                "\nLocation = " + location.getDescription();
     }
+
 }

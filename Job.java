@@ -128,13 +128,12 @@ public class Job
             /**
      * metode untuk mencetak data
      */
-    public void printData(){
-        System.out.println("=====================JOB=====================");
-        System.out.println("ID: " + id);
-        System.out.println("Name: " + name);
-        System.out.println("Recruiter: " + recruiter.getName());
-        System.out.println("City: " + recruiter.getLocation().getCity());
-        System.out.println("Fee: " + fee);
-        System.out.println("Category: " + category.toString());
+    public String toString(){
+        return  "\nId = " + id +
+                "\nNama = " + name +
+                "\nRecruiter = " + recruiter +
+                "\nCity = " + getRecruiter().getLocation().getCity() +
+                "\nFee = " + fee +
+                "\nCategory = " + category.toString();
     }
 }

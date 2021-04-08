@@ -3,7 +3,7 @@
  * Write a description of class Bonus here.
  *
  * @author Haidar Hanif
- * @version 1-04-2020
+ * @version 8-04-2020
  */
 public class Bonus
 {
@@ -138,10 +138,11 @@ public class Bonus
     /**
      * metode untuk mencetak data
      */
-    public void printData(){
-        System.out.println(id);
-        System.out.println(referralCode);
-        System.out.println(extraFee);
-        System.out.println(minTotalFee);
+    public String toString(){
+        return "\nID = " + id +
+                "\nReferral Code = " + referralCode +
+                "\nExtra Fee = " + extraFee +
+                "\nMin Total Fee = " + minTotalFee +
+                "\nActive Status = " + active;
     }
 }
