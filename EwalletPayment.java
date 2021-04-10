@@ -1,9 +1,8 @@
-
 /**
  * subclass EwalletPayment
  *
  * @author Haidar Hanif
- * @version 1-04-2021
+ * @version 10-04-2021
  */
 public class EwalletPayment extends Invoice
 {
@@ -13,17 +12,17 @@ public class EwalletPayment extends Invoice
     /**
      * Constructor for objects of class EwallletPayment
      */
-    public EwalletPayment(int id, Job job, String date, Jobseeker jobseeker, InvoiceStatus invoiceStatus)
+    public EwalletPayment(int id, Job job, Jobseeker jobseeker, InvoiceStatus invoiceStatus)
     {
-        super(id, job, date, jobseeker, invoiceStatus);
+        super(id, job, jobseeker, invoiceStatus);
     }
     
         /**
      * Constructor for objects of class EwallletPayment
      */
-    public EwalletPayment(int id, Job job, String date, Jobseeker jobseeker, Bonus bonus, InvoiceStatus invoiceStatus)
+    public EwalletPayment(int id, Job job, Jobseeker jobseeker, Bonus bonus, InvoiceStatus invoiceStatus)
     {
-        super(id, job, date, jobseeker, invoiceStatus);
+        super(id, job, jobseeker, invoiceStatus);
         this.bonus = bonus;
     }
 
@@ -77,19 +76,21 @@ public class EwalletPayment extends Invoice
      * metode untuk mencetak data
      */
     @Override
-    public void printData(){           
-        System.out.println("===================== INVOICE =====================");
-        System.out.println("ID: " + getId());
-        System.out.println("Job: " + getJob().getName());
-        System.out.println("Date: " + getDate());
-        System.out.println("Job Seeker: " + getJobseeker().getName());
-        
+    public String toString(){           
+        String text = "===================== INVOICE =====================" +
+                "\nID: " + getId() +
+                "\nJob: " + getJob().getName() +
+                "\nDate: " + getDate().getTime() +
+                "\nJob Seeker: " + getJobseeker().getName();
+                
         if (bonus!=null && bonus.getActive() && totalFee >= bonus.getMinTotalFee()) {
-            System.out.println("Referral Code: " + bonus.getReferralCode());
+            text += "\nReferral Code: " + bonus.getReferralCode();
         }
         
-        System.out.println("Fee: " + totalFee);
-        System.out.println("Status: " + getInvoiceStatus().toString());
-        System.out.println("Payment Type: " + PAYMENT_TYPE);
+        text += "\nFee: " + totalFee +
+                "\nStatus: " + getInvoiceStatus().toString() +
+                "\nPayment Type: " + PAYMENT_TYPE.toString();
+        
+        return text;
     }
 }

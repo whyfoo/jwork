@@ -3,7 +3,7 @@
  * subclass BankPayment dari invoice
  *
  * @author Haidar Hanif
- * @version 3-04-2021
+ * @version 10-04-2021
  */
 public class BankPayment extends Invoice
 {
@@ -13,17 +13,17 @@ public class BankPayment extends Invoice
     /**
      * Constructor for objects of class EwallletPayment
      */
-    public BankPayment(int id, Job job, String date, Jobseeker jobseeker, InvoiceStatus invoiceStatus)
+    public BankPayment(int id, Job job, Jobseeker jobseeker, InvoiceStatus invoiceStatus)
     {
-        super(id, job, date, jobseeker, invoiceStatus);
+        super(id, job, jobseeker, invoiceStatus);
     }
     
         /**
      * Constructor for objects of class EwallletPayment
      */
-    public BankPayment(int id, Job job, String date, Jobseeker jobseeker, InvoiceStatus invoiceStatus, int adminFee)
+    public BankPayment(int id, Job job, Jobseeker jobseeker, InvoiceStatus invoiceStatus, int adminFee)
     {
-        super(id, job, date, jobseeker, invoiceStatus);
+        super(id, job, jobseeker, invoiceStatus);
         this.adminFee = adminFee;
     }
 
@@ -77,15 +77,15 @@ public class BankPayment extends Invoice
      * metode untuk mencetak data
      */
     @Override
-    public void printData(){           
-        System.out.println("===================== INVOICE =====================");
-        System.out.println("ID: " + getId());
-        System.out.println("Job: " + getJob().getName());
-        System.out.println("Date: " + getDate());
-        System.out.println("Job Seeker: " + getJobseeker().getName());
-        System.out.println("Admin Fee: " + adminFee);       
-        System.out.println("Fee: " + totalFee);
-        System.out.println("Status: " + getInvoiceStatus().toString());
-        System.out.println("Payment Type: " + PAYMENT_TYPE);
+    public String toString(){           
+        return "===================== INVOICE =====================" +
+        "\nID: " + getId() +
+        "\nJob: " + getJob().getName() +
+        "\nDate: " + getDate().getTime() +
+        "\nJob Seeker: " + getJobseeker().getName() +
+        "\nAdmin Fee: " + adminFee +       
+        "\nFee: " + totalFee +
+        "\nStatus: " + getInvoiceStatus().toString() +
+        "\nPayment Type: " + PAYMENT_TYPE.toString();
     }
 }

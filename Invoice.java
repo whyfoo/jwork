@@ -1,3 +1,5 @@
+import java.util.Calendar;
+
 /**
  * Class of Invoice
  *
@@ -9,7 +11,7 @@ abstract class Invoice
     // instance variables - replace the example below with your own
     private int id;
     private Job job;
-    private String date;
+    private Calendar date;
     protected int totalFee;
     private Jobseeker jobseeker;
     private InvoiceStatus invoiceStatus;
@@ -17,11 +19,11 @@ abstract class Invoice
     /**
      * Constructor untuk Invoice
      */
-    public Invoice(int id, Job job, String date, Jobseeker jobseeker, InvoiceStatus invoiceStatus)
+    public Invoice(int id, Job job, Jobseeker jobseeker, InvoiceStatus invoiceStatus)
     {
         this.id = id;
         this.job = job;
-        this.date = date;
+        this.date = Calendar.getInstance();
         this.jobseeker = jobseeker;
         this.invoiceStatus = invoiceStatus;
     }
@@ -51,7 +53,7 @@ abstract class Invoice
      *
      * @return    tanggal dari invoice (date)
      */
-    public String getDate()
+    public Calendar getDate()
     {
         return date;
     }
@@ -117,9 +119,21 @@ abstract class Invoice
      *
      * @param  date  parameter untuk mengganti tanggal
      */
-    public void setDate(String date)
+    public void setDate(Calendar date)
     {
         this.date = date;
+    }
+    
+                /**
+     * setter untuk mengatur tanggal
+     *
+     * @param  year  parameter untuk mengganti tahun
+     * @param  month  parameter untuk mengganti tahun
+     * @param  dayOfMonth  parameter untuk mengganti tahun
+     */
+    public void setDate(int year, int month, int dayOfMonth)
+    {
+        date.set(year, month-1, dayOfMonth);
     }
     
             /**
@@ -152,7 +166,7 @@ abstract class Invoice
         /**
      * metode untuk mencetak data
      */
-    public abstract void printData();
+    public abstract String toString();
         //System.out.println("===================== INVOICE =====================");
         //System.out.println("ID: " + id);
         //System.out.println("ID Job: " + idJob);

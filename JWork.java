@@ -11,20 +11,14 @@ public class JWork
 
     public static void main (String[] args)
     {
-        Jobseeker pertama = new Jobseeker(707070, "Haidarh", ".haidarh@ui.ac.id", "pass", new GregorianCalendar(2021,3,8));
-        Jobseeker kedua = new Jobseeker(707070, "Haidarh", "haidarh@ui.ac.id", "Password1", 2021, 4, 8);
-        Jobseeker ketiga = new Jobseeker(707070, "Haidarh", "terserah", "terserah");
+        Location location1 = new Location("Jawa Barat", "Depok", "Kukusan");
+        Recruiter recruiter1 = new Recruiter(1806148694, "FM", "fm@ui.ac.id", "808080", location1);
+        Job job1 = new Job(777, "UI Engineer", recruiter1, 6000000, JobCategory.UI);
+        Jobseeker js1 = new Jobseeker(707070, "pencarikerja", "pencari@ui.ac.id", "pass");
+        Invoice eDompet = new EwalletPayment(1, job1, js1, InvoiceStatus.Cancelled);
+        Invoice bank = new BankPayment(2, job1, js1, InvoiceStatus.Cancelled);
         
-        System.out.println(pertama.toString());
-        System.out.println(kedua.toString());
-        System.out.println(ketiga.toString());
-        
-        pertama.setEmail("uoi1@ui.com");
-        pertama.setPassword("Passbenar1");
-        kedua.setEmail("uoi2@ui.com");
-        kedua.setPassword("Passbenar2");
-        
-        System.out.println(pertama.toString());
-        System.out.println(kedua.toString());
+        System.out.println(eDompet.toString());
+        System.out.println(bank.toString());
     }
 }
