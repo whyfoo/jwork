@@ -129,7 +129,8 @@ public class Job
      * metode untuk mencetak data
      */
     public String toString(){
-        return  "\nId = " + id +
+        return  "===================== Job =====================" +
+                "\nId = " + id +
                 "\nNama = " + name +
                 "\nRecruiter = " + recruiter +
                 "\nCity = " + getRecruiter().getLocation().getCity() +

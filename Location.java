@@ -85,7 +85,8 @@ public class Location
      * metode untuk mencetak data
      */
     public String toString(){
-        return  "\nProvince = " + province +
+        return  "===================== Location =====================" +
+                "\nProvince = " + province +
                 "\nCity = " + city +
                 "\nDescription = " + description;
     }

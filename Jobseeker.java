@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat;
  * Jobseeker adalah kelas yang berisi data jobseeker
  *
  * @author Haidar Hanif
- * @version 08-04-2021
+ * @version 10-04-2021
  */
 public class Jobseeker
 {
@@ -36,7 +36,7 @@ public class Jobseeker
         this.name = name;
         setEmail(email);
         setPassword(password);
-        this.joinDate = new GregorianCalendar(year, month, dayOfMonth);
+        joinDate = new GregorianCalendar(year, month-1, dayOfMonth);
     }
     
     public Jobseeker(int id, String name, String email, String password)
@@ -45,6 +45,7 @@ public class Jobseeker
         this.name = name;
         setEmail(email);
         setPassword(password);
+        joinDate = Calendar.getInstance();  //mengambil tanggal sekarang
     }
     
     /**
@@ -166,7 +167,7 @@ public class Jobseeker
      */
     public void setJoinDate(int year, int month, int dayOfMonth)
     {
-        joinDate.set(year, month, dayOfMonth);
+        joinDate.set(year, month-1, dayOfMonth);
     }
     
     /**
@@ -174,19 +175,11 @@ public class Jobseeker
      */
     public String toString(){
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy");
-        if (joinDate != null){
-            return  "\nID = " + id +
+        return  "===================== Jobseeker =====================" +
+                "\nID = " + id +
                 "\nNama = " + name +
                 "\nEmail = " + email +
                 "\nPassword = " + password +
                 "\nJoin Date = " + dateFormat.format(joinDate.getTime());
-        }
-        else {
-                return  "\nID = " + id +
-                "\nNama = " + name +
-                "\nEmail = " + email +
-                "\nPassword = " + password;
-            }
-                
     }
 }

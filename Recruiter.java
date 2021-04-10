@@ -129,7 +129,8 @@ public class Recruiter
      * metode untuk mencetak data
      */
         public String toString(){
-        return  "\nId = " + id +
+        return  "===================== Recruiter =====================" +
+                "\nId = " + id +
                 "\nNama = " + name +
                 "\nPhoneNumber = " + phoneNumber +
                 "\nLocation = " + location.getDescription();

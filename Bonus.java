@@ -3,7 +3,7 @@
  * Write a description of class Bonus here.
  *
  * @author Haidar Hanif
- * @version 8-04-2020
+ * @version 10-04-2020
  */
 public class Bonus
 {
@@ -139,7 +139,8 @@ public class Bonus
      * metode untuk mencetak data
      */
     public String toString(){
-        return "\nID = " + id +
+        return  "===================== Bonus =====================" +
+                "\nID = " + id +
                 "\nReferral Code = " + referralCode +
                 "\nExtra Fee = " + extraFee +
                 "\nMin Total Fee = " + minTotalFee +
