@@ -1,3 +1,5 @@
+import java.text.SimpleDateFormat;
+
 /**
  * subclass EwalletPayment
  *
@@ -76,11 +78,12 @@ public class EwalletPayment extends Invoice
      * metode untuk mencetak data
      */
     @Override
-    public String toString(){           
+    public String toString(){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy");
         String text = "===================== INVOICE =====================" +
                 "\nID: " + getId() +
                 "\nJob: " + getJob().getName() +
-                "\nDate: " + getDate().getTime() +
+                "\nDate: " + dateFormat.format(getDate().getTime()) +
                 "\nJob Seeker: " + getJobseeker().getName();
                 
         if (bonus!=null && bonus.getActive() && totalFee >= bonus.getMinTotalFee()) {

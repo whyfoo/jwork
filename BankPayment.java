@@ -1,3 +1,4 @@
+import java.text.SimpleDateFormat;
 
 /**
  * subclass BankPayment dari invoice
@@ -77,11 +78,12 @@ public class BankPayment extends Invoice
      * metode untuk mencetak data
      */
     @Override
-    public String toString(){           
+    public String toString(){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy");
         return "===================== INVOICE =====================" +
         "\nID: " + getId() +
         "\nJob: " + getJob().getName() +
-        "\nDate: " + getDate().getTime() +
+        "\nDate: " + dateFormat.format(getDate().getTime()) +
         "\nJob Seeker: " + getJobseeker().getName() +
         "\nAdmin Fee: " + adminFee +       
         "\nFee: " + totalFee +
