@@ -71,7 +71,7 @@ public class DatabaseJob
      */
     public static ArrayList<Job> getJobByCategory(JobCategory category)
     {
-        ArrayList<Job> valueJob = null;
+        ArrayList<Job> valueJob = new ArrayList<Job>();
         for(Job jobo: JOB_DATABASE)
         {
             if(jobo.getCategory() == category)

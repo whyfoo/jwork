@@ -31,13 +31,20 @@ public class JWork
         DatabaseJobSeeker.addJobseeker(new Jobseeker(DatabaseJobSeeker.getLastId()+1, "HaidarH", "haidar.hanif@ui.ac.id", "Passsss1"));
         DatabaseJobSeeker.addJobseeker(new Jobseeker(DatabaseJobSeeker.getLastId()+1, "HaidarH", "haidar.hanif@ui.ac.id", "Passsss1"));
 
-        DatabaseJobSeeker.addJobseeker(new Jobseeker(DatabaseJobSeeker.getLastId()+1, "FM", "fm@ui.ac.id", "pass"));
+        DatabaseJobSeeker.addJobseeker(new Jobseeker(DatabaseJobSeeker.getLastId()+1, "FM", "fm@ui.ac.id", "Passsss2"));
 
         for(Jobseeker jobseeker: DatabaseJobSeeker.getJobseekerDatabase()){
             System.out.println(jobseeker.toString());
         }
 
-        
+        DatabaseJob.addJob(new Job( DatabaseJob.getLastId()+1, "UI Engineer", DatabaseRecruiter.getRecruiterById(1), 600, JobCategory.UI));
+        DatabaseJob.addJob(new Job( DatabaseJob.getLastId()+1, "UI Analyst", DatabaseRecruiter.getRecruiterById(1), 600, JobCategory.UI));
+        DatabaseJob.addJob(new Job( DatabaseJob.getLastId()+1, "Backend Engineer", DatabaseRecruiter.getRecruiterById(1), 600, JobCategory.BackEnd));
+
+        for(Job jobo: DatabaseJob.getJobByCategory(JobCategory.UI)){
+            System.out.println(jobo.toString());
+        }
+
 
 
     }

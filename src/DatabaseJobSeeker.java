@@ -8,7 +8,7 @@ import java.util.ArrayList;
  */
 public class DatabaseJobSeeker
 {
-    private static ArrayList<Jobseeker> JOBSEEKER_DATABASE;
+    private static ArrayList<Jobseeker> JOBSEEKER_DATABASE  = new ArrayList<>();
     private static int lastId = 0;
 
     /**
