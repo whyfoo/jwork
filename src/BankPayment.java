@@ -1,10 +1,11 @@
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 /**
  * subclass BankPayment dari invoice
  *
  * @author Haidar Hanif
- * @version 10-04-2021
+ * @version 21-04-2021
  */
 public class BankPayment extends Invoice
 {
@@ -14,17 +15,17 @@ public class BankPayment extends Invoice
     /**
      * Constructor for objects of class EwallletPayment
      */
-    public BankPayment(int id, Job job, Jobseeker jobseeker, InvoiceStatus invoiceStatus)
+    public BankPayment(int id, ArrayList<Job> jobs, Jobseeker jobseeker)
     {
-        super(id, job, jobseeker, invoiceStatus);
+        super(id, jobs, jobseeker);
     }
     
         /**
      * Constructor for objects of class EwallletPayment
      */
-    public BankPayment(int id, Job job, Jobseeker jobseeker, InvoiceStatus invoiceStatus, int adminFee)
+    public BankPayment(int id, ArrayList<Job> jobs, Jobseeker jobseeker, int adminFee)
     {
-        super(id, job, jobseeker, invoiceStatus);
+        super(id, jobs, jobseeker);
         this.adminFee = adminFee;
     }
 
@@ -67,10 +68,17 @@ public class BankPayment extends Invoice
     public void setTotalFee()
     {
         if (adminFee != 0) {
-            totalFee = getJob().getFee() - adminFee;
+            for(Job job: getJobs())
+            {
+                totalFee += job.getFee();
+            }
+            totalFee-= adminFee;
         }
         else {
-            totalFee = getJob().getFee();
+            for(Job job: getJobs())
+            {
+                totalFee += job.getFee();
+            }
         }
     }
     
@@ -80,14 +88,22 @@ public class BankPayment extends Invoice
     @Override
     public String toString(){
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy");
-        return "===================== INVOICE =====================" +
+        String value = "===================== INVOICE =====================" +
         "\nID: " + getId() +
-        "\nJob: " + getJob().getName() +
+        "\nJob: ";
+        for(Job job: getJobs())
+        {
+            value += job.getName() + ", ";
+        }
+
+        value +=
         "\nDate: " + dateFormat.format(getDate().getTime()) +
         "\nJob Seeker: " + getJobseeker().getName() +
         "\nAdmin Fee: " + adminFee +       
         "\nFee: " + totalFee +
         "\nStatus: " + getInvoiceStatus().toString() +
         "\nPayment Type: " + PAYMENT_TYPE.toString();
+
+        return value;
     }
 }

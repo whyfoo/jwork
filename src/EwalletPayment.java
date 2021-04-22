@@ -1,10 +1,11 @@
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 /**
  * subclass EwalletPayment
  *
  * @author Haidar Hanif
- * @version 10-04-2021
+ * @version 21-04-2021
  */
 public class EwalletPayment extends Invoice
 {
@@ -14,17 +15,17 @@ public class EwalletPayment extends Invoice
     /**
      * Constructor for objects of class EwallletPayment
      */
-    public EwalletPayment(int id, Job job, Jobseeker jobseeker, InvoiceStatus invoiceStatus)
+    public EwalletPayment(int id, ArrayList<Job> jobs, Jobseeker jobseeker)
     {
-        super(id, job, jobseeker, invoiceStatus);
+        super(id, jobs, jobseeker);
     }
     
         /**
      * Constructor for objects of class EwallletPayment
      */
-    public EwalletPayment(int id, Job job, Jobseeker jobseeker, Bonus bonus, InvoiceStatus invoiceStatus)
+    public EwalletPayment(int id, ArrayList<Job> jobs, Jobseeker jobseeker, Bonus bonus)
     {
-        super(id, job, jobseeker, invoiceStatus);
+        super(id, jobs, jobseeker);
         this.bonus = bonus;
     }
 
@@ -66,11 +67,18 @@ public class EwalletPayment extends Invoice
     @Override
     public void setTotalFee()
     {
-        if (bonus!=null && bonus.getActive() && getJob().getFee() > bonus.getMinTotalFee()) {
-            totalFee = getJob().getFee() + bonus.getExtraFee();
+        int sumFee = 0;
+        for(Job job: getJobs())
+        {
+            sumFee += job.getFee();
         }
-        else {
-            totalFee = getJob().getFee();
+        if(bonus != null && bonus.getActive() && sumFee > bonus.getMinTotalFee())
+        {
+            totalFee = sumFee + bonus.getExtraFee();
+        }
+        else
+        {
+            totalFee = sumFee;
         }
     }
     
@@ -82,9 +90,15 @@ public class EwalletPayment extends Invoice
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy");
         String text = "===================== INVOICE =====================" +
                 "\nID: " + getId() +
-                "\nJob: " + getJob().getName() +
-                "\nDate: " + dateFormat.format(getDate().getTime()) +
-                "\nJob Seeker: " + getJobseeker().getName();
+                "\nJob: ";
+
+        for(Job job: getJobs())
+        {
+            text += job.getName() + ", ";
+        }
+
+        text+= "\nDate: " + dateFormat.format(getDate().getTime()) +
+               "\nJob Seeker: " + getJobseeker().getName();
                 
         if (bonus!=null && bonus.getActive() && totalFee >= bonus.getMinTotalFee()) {
             text += "\nReferral Code: " + bonus.getReferralCode();
