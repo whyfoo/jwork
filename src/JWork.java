@@ -24,25 +24,34 @@ public class JWork
 //        System.out.println(eDompet.toString());
 //        System.out.println(bank.toString());
 
-        Location location1 = new Location("Jawa Barat", "Depok", "Kukusan");
+//        Location location1 = new Location("Jawa Barat", "Depok", "Kukusan");
+//
+//        DatabaseRecruiter.addRecruiter(new Recruiter(DatabaseRecruiter.getLastId()+1, "Perekrut", "perekrut@ui.ac.id", "123456", location1));
+//
+//        DatabaseJobSeeker.addJobseeker(new Jobseeker(DatabaseJobSeeker.getLastId()+1, "HaidarH", "haidar.hanif@ui.ac.id", "Passsss1"));
+//        DatabaseJobSeeker.addJobseeker(new Jobseeker(DatabaseJobSeeker.getLastId()+1, "HaidarH", "haidar.hanif@ui.ac.id", "Passsss1"));
+//
+//        DatabaseJobSeeker.addJobseeker(new Jobseeker(DatabaseJobSeeker.getLastId()+1, "FM", "fm@ui.ac.id", "Passsss2"));
+//
+//        for(Jobseeker jobseeker: DatabaseJobSeeker.getJobseekerDatabase()){
+//            System.out.println(jobseeker.toString());
+//        }
+//
+//        DatabaseJob.addJob(new Job( DatabaseJob.getLastId()+1, "UI Engineer", DatabaseRecruiter.getRecruiterById(1), 600, JobCategory.UI));
+//        DatabaseJob.addJob(new Job( DatabaseJob.getLastId()+1, "UI Analyst", DatabaseRecruiter.getRecruiterById(1), 600, JobCategory.UI));
+//        DatabaseJob.addJob(new Job( DatabaseJob.getLastId()+1, "Backend Engineer", DatabaseRecruiter.getRecruiterById(1), 600, JobCategory.BackEnd));
+//
+//        for(Job jobo: DatabaseJob.getJobByCategory(JobCategory.UI)){
+//            System.out.println(jobo.toString());
+//        }
 
-        DatabaseRecruiter.addRecruiter(new Recruiter(DatabaseRecruiter.getLastId()+1, "Perekrut", "perekrut@ui.ac.id", "123456", location1));
+        //1
+        DatabaseBonus.addBonus(new Bonus(DatabaseBonus.getLastId()+1, "REFCODE", 10, 5, false));
+        DatabaseBonus.addBonus(new Bonus(DatabaseBonus.getLastId()+1, "REFCODE", 5, 5, true));
 
-        DatabaseJobSeeker.addJobseeker(new Jobseeker(DatabaseJobSeeker.getLastId()+1, "HaidarH", "haidar.hanif@ui.ac.id", "Passsss1"));
-        DatabaseJobSeeker.addJobseeker(new Jobseeker(DatabaseJobSeeker.getLastId()+1, "HaidarH", "haidar.hanif@ui.ac.id", "Passsss1"));
-
-        DatabaseJobSeeker.addJobseeker(new Jobseeker(DatabaseJobSeeker.getLastId()+1, "FM", "fm@ui.ac.id", "Passsss2"));
-
-        for(Jobseeker jobseeker: DatabaseJobSeeker.getJobseekerDatabase()){
-            System.out.println(jobseeker.toString());
-        }
-
-        DatabaseJob.addJob(new Job( DatabaseJob.getLastId()+1, "UI Engineer", DatabaseRecruiter.getRecruiterById(1), 600, JobCategory.UI));
-        DatabaseJob.addJob(new Job( DatabaseJob.getLastId()+1, "UI Analyst", DatabaseRecruiter.getRecruiterById(1), 600, JobCategory.UI));
-        DatabaseJob.addJob(new Job( DatabaseJob.getLastId()+1, "Backend Engineer", DatabaseRecruiter.getRecruiterById(1), 600, JobCategory.BackEnd));
-
-        for(Job jobo: DatabaseJob.getJobByCategory(JobCategory.UI)){
-            System.out.println(jobo.toString());
+        //2
+        for (Bonus bonus: DatabaseBonus.getBonusDatabase()){
+            System.out.println(bonus.toString());
         }
 
 
