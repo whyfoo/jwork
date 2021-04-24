@@ -163,7 +163,7 @@ public class Jobseeker
             /**
      * setter untuk mengatur nilai joinDate
      *
-     * @param  joinDate parameter untuk mengganti join date (masukan d-m-y)
+     * @param  year, month, dayOfMonth parameter untuk mengganti join date (masukan d-m-y)
      */
     public void setJoinDate(int year, int month, int dayOfMonth)
     {

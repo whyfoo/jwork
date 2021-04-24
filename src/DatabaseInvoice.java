@@ -1,5 +1,11 @@
 import java.util.ArrayList;
 
+/**
+ * Kelas Database untuk Invoice
+ *
+ * @author Haidar Hanif
+ * @version 24-04-2021
+ */
 public class DatabaseInvoice {
     private static ArrayList<Invoice> INVOICE_DATABASE  = new ArrayList<>();
     private static int lastId = 0;
@@ -43,11 +49,11 @@ public class DatabaseInvoice {
     /**
      * getter mengambil invoice dari jobseeker
      * @param jobSeekerId Recruiter ID
-     * @return   ArrayList<Invoice>
+     * @return   invoice by jobseeker
      */
     public static ArrayList<Invoice> getInvoiceByJobseeker(int jobSeekerId)
     {
-        ArrayList<Invoice> valueInvoice = null;
+        ArrayList<Invoice> valueInvoice = new ArrayList<>();
         for(Invoice inv: INVOICE_DATABASE)
         {
             if(inv.getJobseeker().getId() == jobSeekerId)
@@ -79,10 +85,10 @@ public class DatabaseInvoice {
 
     /**
      * setter activate invoice
-     * @param id Bonus ID
+     * @param id invoice ID
      * @return    berhasil/tidak
      */
-    public static boolean activateBonus(int id, InvoiceStatus invoiceStatus)
+    public static boolean changeInvoiceStatus(int id, InvoiceStatus invoiceStatus)
     {
         for(Invoice inv: INVOICE_DATABASE) {
             if (inv.getId() == id) {
@@ -95,10 +101,10 @@ public class DatabaseInvoice {
 
     /**
      * setter mengapus invoice
-     * @param id Bonus ID
+     * @param id invoice ID
      * @return    false
      */
-    public static boolean removeBonus(int id)
+    public static boolean removeInvoice(int id)
     {
         return INVOICE_DATABASE.removeIf(inv -> inv.getId() == id);
     }

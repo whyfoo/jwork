@@ -4,7 +4,7 @@ import java.util.ArrayList;
  * Kelas Database untuk Bonus
  *
  * @author Haidar Hanif
- * @version 1-04-2021
+ * @version 24-04-2021
  */
 public class DatabaseBonus
 {

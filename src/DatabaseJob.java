@@ -49,7 +49,7 @@ public class DatabaseJob
     /**
      * getter mengambil job dari recruiter
      * @param recruiterId Recruiter ID
-     * @return   ArrayList<Job>
+     * @return   job by recruiter
      */
     public static ArrayList<Job> getJobByRecruiter(int recruiterId)
     {
@@ -67,7 +67,7 @@ public class DatabaseJob
     /**
      * getter mengambil job dari kategori
      * @param category Job Category
-     * @return    ArrayList<Job>
+     * @return    job by category
      */
     public static ArrayList<Job> getJobByCategory(JobCategory category)
     {

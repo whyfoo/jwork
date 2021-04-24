@@ -142,7 +142,7 @@ abstract class Invoice
             /**
      * setter untuk mengatur total fee
      *
-     * @param  totalFee  parameter untuk mengganti total fee
+     *
      */
     public abstract void setTotalFee();
     
