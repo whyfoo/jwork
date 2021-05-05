@@ -4,7 +4,7 @@ import java.util.ArrayList;
  * Kelas Database untuk Invoice
  *
  * @author Haidar Hanif
- * @version 24-04-2021
+ * @version 05-05-2021
  */
 public class DatabaseInvoice {
     private static ArrayList<Invoice> INVOICE_DATABASE  = new ArrayList<>();
@@ -91,7 +91,7 @@ public class DatabaseInvoice {
     public static boolean changeInvoiceStatus(int id, InvoiceStatus invoiceStatus)
     {
         for(Invoice inv: INVOICE_DATABASE) {
-            if (inv.getId() == id) {
+            if (inv.getId() == id && inv.getInvoiceStatus() == InvoiceStatus.OnGoing) {
                 inv.setInvoiceStatus(invoiceStatus);
                 return true;
             }
