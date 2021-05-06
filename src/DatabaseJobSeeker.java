@@ -4,7 +4,7 @@ import java.util.ArrayList;
  * Class of DatabaseJobSeeker
  *
  * @author Haidar Hanif
- * @version 22-04-2021
+ * @version 6-05-2021
  */
 public class DatabaseJobSeeker
 {
@@ -34,7 +34,7 @@ public class DatabaseJobSeeker
      * @param id Jobseeker ID
      * @return    null
      */
-    public static Jobseeker getJobseekerById(int id)
+    public static Jobseeker getJobseekerById(int id) throws JobSeekerNotFoundException
     {
         Jobseeker valueJobseeker = null;
         for(Jobseeker js: JOBSEEKER_DATABASE)
@@ -44,20 +44,25 @@ public class DatabaseJobSeeker
                 valueJobseeker = js;
             }
         }
-        return valueJobseeker;
+
+        if (valueJobseeker == null) {
+            throw new JobSeekerNotFoundException(id);
+        } else {
+            return valueJobseeker;
+        }
     }
     /**
      * metode untuk menambah JobseekerDatabase
      * @param jobseeker Jobseeker
      * @return    false
      */
-    public static boolean addJobseeker(Jobseeker jobseeker)
+    public static boolean addJobseeker(Jobseeker jobseeker) throws EmailAlreadyExistsException
     {
         for(Jobseeker js: JOBSEEKER_DATABASE)
         {
             if(js.getEmail() == jobseeker.getEmail())
             {
-                return false;
+                throw new EmailAlreadyExistsException(jobseeker);
             }
         }
 
@@ -70,8 +75,12 @@ public class DatabaseJobSeeker
      * @param id Jobseeker ID
      * @return    false
      */
-    public static boolean removeJobseeker(int id)
+    public static boolean removeJobseeker(int id) throws JobSeekerNotFoundException
     {
-        return JOBSEEKER_DATABASE.removeIf(js -> js.getId() == id);
+        if (JOBSEEKER_DATABASE.removeIf(js -> js.getId() == id)) {
+            return true;
+        } else {
+            throw new JobSeekerNotFoundException(id);
+        }
     }
 }

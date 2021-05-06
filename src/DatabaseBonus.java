@@ -4,7 +4,7 @@ import java.util.ArrayList;
  * Kelas Database untuk Bonus
  *
  * @author Haidar Hanif
- * @version 24-04-2021
+ * @version 6-05-2021
  */
 public class DatabaseBonus
 {
@@ -34,7 +34,7 @@ public class DatabaseBonus
      * @param id Bonus ID
      * @return    null
      */
-    public static Bonus getBonusById(int id)
+    public static Bonus getBonusById(int id) throws BonusNotFoundException
     {
         Bonus valueBonus = null;
         for(Bonus bon: BONUS_DATABASE)
@@ -44,7 +44,12 @@ public class DatabaseBonus
                 valueBonus = bon;
             }
         }
-        return valueBonus;
+
+        if (valueBonus == null) {
+            throw new BonusNotFoundException(id);
+        } else {
+            return valueBonus;
+        }
     }
 
     /**
@@ -70,13 +75,13 @@ public class DatabaseBonus
      * @param bonus Bonus
      * @return    berhasil/tidak
      */
-    public static boolean addBonus(Bonus bonus)
+    public static boolean addBonus(Bonus bonus) throws ReferralCodeAlreadyExistsException
     {
         for(Bonus js: BONUS_DATABASE)
         {
             if(js.getReferralCode() == bonus.getReferralCode())
             {
-                return false;
+                throw new ReferralCodeAlreadyExistsException(bonus);
             }
         }
 
@@ -121,8 +126,12 @@ public class DatabaseBonus
      * @param id Bonus ID
      * @return    false
      */
-    public static boolean removeBonus(int id)
+    public static boolean removeBonus(int id) throws BonusNotFoundException
     {
-        return BONUS_DATABASE.removeIf(bonus -> bonus.getId() == id);
+        if (BONUS_DATABASE.removeIf(bonus -> bonus.getId() == id)) {
+            return true;
+        } else {
+            throw new BonusNotFoundException(id);
+        }
     }
 }
