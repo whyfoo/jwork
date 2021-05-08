@@ -98,7 +98,7 @@ public class JWork
 //            System.out.println(inv.toString());
 //        }
 
-
+        //CS Modul 7
 
         //2
         try {
@@ -186,10 +186,46 @@ public class JWork
 
         //1 & 2
 
+//        try {
+//            DatabaseInvoice.addInvoice(new BankPayment(DatabaseInvoice.getLastId() + 1, DatabaseJob.getJobDatabase(), DatabaseJobSeeker.getJobseekerById(1)));
+//        } catch (JobSeekerNotFoundException e) {
+//            System.out.println(e.getMessage());
+//        }
+//
+//        try {
+//            DatabaseInvoice.addInvoice(new BankPayment(DatabaseInvoice.getLastId() + 1, DatabaseJob.getJobDatabase(), DatabaseJobSeeker.getJobseekerById(2)));
+//        } catch (JobSeekerNotFoundException e) {
+//            System.out.println(e.getMessage());
+//        }
+//
+//        try {
+//            DatabaseInvoice.addInvoice(new EwalletPayment(DatabaseInvoice.getLastId() + 1, DatabaseJob.getJobDatabase(), DatabaseJobSeeker.getJobseekerById(3)));
+//        } catch (JobSeekerNotFoundException e) {
+//            System.out.println(e.getMessage());
+//        }
+
+//        //3
+//        FeeCalculator fc1 = new FeeCalculator(DatabaseInvoice.getInvoiceById(1));
+//        FeeCalculator fc2 = new FeeCalculator(DatabaseInvoice.getInvoiceById(2));
+//        FeeCalculator fc3 = new FeeCalculator(DatabaseInvoice.getInvoiceById(3));
+//
+//        Thread thread1 = new Thread(fc1);
+//        thread1.start();
+//
+//        Thread thread2 = new Thread(fc2);
+//        thread2.start();
+//
+//        Thread thread3 = new Thread(fc3);
+//        thread3.start();
+
+        //Post Test modul 7
+
         try {
             DatabaseInvoice.addInvoice(new BankPayment(DatabaseInvoice.getLastId() + 1, DatabaseJob.getJobDatabase(), DatabaseJobSeeker.getJobseekerById(1)));
-        } catch (JobSeekerNotFoundException e) {
-            System.out.println(e.getMessage());
+        } catch (JobSeekerNotFoundException nf) {
+            System.out.println(nf.getMessage());
+        } catch (OngoingInvoiceAlreadyExistsException ex) {
+            System.out.println(ex.getMessage());
         }
 
         try {
@@ -203,20 +239,6 @@ public class JWork
         } catch (JobSeekerNotFoundException e) {
             System.out.println(e.getMessage());
         }
-
-        //5
-        FeeCalculator fc1 = new FeeCalculator(DatabaseInvoice.getInvoiceById(1));
-        FeeCalculator fc2 = new FeeCalculator(DatabaseInvoice.getInvoiceById(2));
-        FeeCalculator fc3 = new FeeCalculator(DatabaseInvoice.getInvoiceById(3));
-
-        Thread thread1 = new Thread(fc1);
-        thread1.start();
-
-        Thread thread2 = new Thread(fc2);
-        thread2.start();
-
-        Thread thread3 = new Thread(fc3);
-        thread3.start();
     }
 
 }

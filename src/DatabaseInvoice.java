@@ -69,13 +69,13 @@ public class DatabaseInvoice {
      * @param invoice Invoice
      * @return    boolean berhasil/tidak
      */
-    public static boolean addInvoice(Invoice invoice)
+    public static boolean addInvoice(Invoice invoice) throws OngoingInvoiceAlreadyExistsException
     {
         for(Invoice inv: INVOICE_DATABASE)
         {
             if(inv.getJobseeker() == invoice.getJobseeker() && inv.getInvoiceStatus() == InvoiceStatus.OnGoing)
             {
-                return false;
+                throw new OngoingInvoiceAlreadyExistsException(invoice);
             }
         }
 
@@ -104,8 +104,12 @@ public class DatabaseInvoice {
      * @param id invoice ID
      * @return    false
      */
-    public static boolean removeInvoice(int id)
+    public static boolean removeInvoice(int id) throws InvoiceNotFoundException
     {
-        return INVOICE_DATABASE.removeIf(inv -> inv.getId() == id);
+        if (INVOICE_DATABASE.removeIf(inv -> inv.getId() == id)) {
+            return true;
+        } else {
+            throw new InvoiceNotFoundException(id);
+        }
     }
 }
