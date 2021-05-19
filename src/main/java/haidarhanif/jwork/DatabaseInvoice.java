@@ -34,7 +34,7 @@ public class DatabaseInvoice {
      * @param id Invoice ID
      * @return    null
      */
-    public static Invoice getInvoiceById(int id)
+    public static Invoice getInvoiceById(int id) throws InvoiceNotFoundException
     {
         Invoice valueInvoice = null;
         for(Invoice bon: INVOICE_DATABASE)
@@ -44,7 +44,12 @@ public class DatabaseInvoice {
                 valueInvoice = bon;
             }
         }
-        return valueInvoice;
+
+        if (valueInvoice == null) {
+            throw new InvoiceNotFoundException(id);
+        } else {
+            return valueInvoice;
+        }
     }
 
     /**
