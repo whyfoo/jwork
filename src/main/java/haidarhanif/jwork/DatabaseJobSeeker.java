@@ -61,7 +61,7 @@ public class DatabaseJobSeeker
     {
         for(Jobseeker js: JOBSEEKER_DATABASE)
         {
-            if(js.getEmail() == jobseeker.getEmail())
+            if(js.getEmail().equals(jobseeker.getEmail()))
             {
                 throw new EmailAlreadyExistsException(jobseeker);
             }
@@ -83,5 +83,17 @@ public class DatabaseJobSeeker
         } else {
             throw new JobSeekerNotFoundException(id);
         }
+    }
+
+    public static Jobseeker getJobseekerLogin(String email, String password)
+    {
+        for(Jobseeker js: JOBSEEKER_DATABASE)
+        {
+            if(js.getEmail().equals(email) && js.getPassword().equals(password))
+            {
+                return js;
+            }
+        }
+        return null;
     }
 }

@@ -63,7 +63,7 @@ public class DatabaseBonus
         Bonus valueBonus = null;
         for(Bonus bon: BONUS_DATABASE)
         {
-            if(bon.getReferralCode() == referralCode)
+            if(bon.getReferralCode().equals(referralCode))
             {
                 valueBonus = bon;
             }
@@ -80,7 +80,7 @@ public class DatabaseBonus
     {
         for(Bonus js: BONUS_DATABASE)
         {
-            if(js.getReferralCode() == bonus.getReferralCode())
+            if(js.getReferralCode().equals(bonus.getReferralCode()))
             {
                 throw new ReferralCodeAlreadyExistsException(bonus);
             }
