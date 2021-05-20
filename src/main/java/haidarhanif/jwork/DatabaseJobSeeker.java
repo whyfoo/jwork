@@ -85,7 +85,7 @@ public class DatabaseJobSeeker
         }
     }
 
-    public static Jobseeker getJobseekerLogin(String email, String password)
+    public static Jobseeker jobseekerLogin(String email, String password)
     {
         for(Jobseeker js: JOBSEEKER_DATABASE)
         {

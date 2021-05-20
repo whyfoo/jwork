@@ -43,6 +43,6 @@ public class JobseekerController {
     public Jobseeker loginJobseeker(@RequestParam(value = "email") String email,
                                     @RequestParam(value="password") String password)
     {
-        return DatabaseJobSeeker.getJobseekerLogin(email, password);
+        return DatabaseJobSeeker.jobseekerLogin(email, password);
     }
 }
