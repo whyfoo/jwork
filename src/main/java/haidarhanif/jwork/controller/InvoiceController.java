@@ -66,8 +66,20 @@ public class InvoiceController {
                                   @RequestParam(value = "adminFee") int adminFee)
     {
         BankPayment bank = null;
+        ArrayList<Job> jobAL =  new ArrayList<Job>();
+        for(int id : jobIdList)
+        {
+            try {
+                Job job = DatabaseJob.getJobById(id);
+                jobAL.add(job);
+            } catch (JobNotFoundException e) {
+                e.getMessage();
+                continue;
+            }
+        }
+
         try {
-            bank = new BankPayment(DatabaseInvoice.getLastId()+1, DatabaseJob.getJobById(jobIdList), DatabaseJobSeeker.getJobseekerById(jobseekerId), adminFee);
+            bank = new BankPayment(DatabaseInvoice.getLastId()+1, jobAL, DatabaseJobSeeker.getJobseekerById(jobseekerId), adminFee);
         } catch (JobSeekerNotFoundException e) {
             e.getMessage();
             return null;
@@ -81,16 +93,29 @@ public class InvoiceController {
         }
         
         bank.setTotalFee();
+        return bank;
     }
 
     @RequestMapping(value = "/createEWalletPayment", method = RequestMethod.POST)
     public Invoice addEWalletPayment(@RequestParam(value="jobIdList") ArrayList<Integer> jobIdList,
                                   @RequestParam(value="jobseekerId") int jobseekerId,
-                                  @RequestParam(value = "adminFee") int adminFee)
+                                  @RequestParam(value = "adminFee") Bonus referralCode)
     {
         EwalletPayment eWallet = null;
+        ArrayList<Job> jobAL =  new ArrayList<Job>();
+        for(int id : jobIdList)
+        {
+            try {
+                Job job = DatabaseJob.getJobById(id);
+                jobAL.add(job);
+            } catch (JobNotFoundException e) {
+                e.getMessage();
+                continue;
+            }
+        }
+
         try {
-            eWallet = new EwalletPayment(DatabaseInvoice.getLastId()+1, DatabaseJob.getJobById(jobIdList), DatabaseJobSeeker.getJobseekerById(jobseekerId), adminFee);
+            eWallet = new EwalletPayment(DatabaseInvoice.getLastId()+1, jobAL, DatabaseJobSeeker.getJobseekerById(jobseekerId), referralCode);
         } catch (JobSeekerNotFoundException e) {
             e.getMessage();
             return null;
@@ -104,6 +129,7 @@ public class InvoiceController {
         }
 
         eWallet.setTotalFee();
+        return eWallet;
     }
 
 }
