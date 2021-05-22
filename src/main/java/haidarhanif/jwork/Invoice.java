@@ -10,7 +10,7 @@ import java.util.GregorianCalendar;
  * @author Haidar Hanif
  * @version 22-04-2021
  */
-abstract class Invoice
+public abstract class Invoice
 {
     // instance variables - replace the example below with your own
     private int id;
