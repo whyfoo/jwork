@@ -127,6 +127,7 @@ public class Jobseeker
     public void setEmail(String email)
     {
         String emailRegex = "^[\\w&*_~]+(\\.?[\\w&*_~]+)*@[^-][\\w\\-\\.]+$";
+//        String emailRegex = "^[\\w&_~]([\\w&_~]+\\.?)*@[^-][\\w\\S]+";
         if (Pattern.matches(emailRegex, email)){
             this.email = email;
         }

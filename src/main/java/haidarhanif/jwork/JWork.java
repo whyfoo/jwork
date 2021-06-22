@@ -3,6 +3,8 @@ package haidarhanif.jwork;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import javax.xml.crypto.Data;
+
 @SpringBootApplication
 public class JWork {
 
@@ -36,6 +38,25 @@ public class JWork {
         try {
             DatabaseJob.addJob(new Job(DatabaseJob.getLastId()+1, "UX Engineer", DatabaseRecruiter.getRecruiterById(3), 20, JobCategory.UX));
         } catch (RecruiterNotFoundException e) {
+            e.getMessage();
+        }
+
+        try {
+            DatabaseJob.addJob(new Job(DatabaseJob.getLastId()+1, "UX Engineer", DatabaseRecruiter.getRecruiterById(3), 20, JobCategory.UX));
+        } catch (RecruiterNotFoundException e) {
+            e.getMessage();
+        }
+
+
+        try {
+            DatabaseJobSeeker.addJobseeker(new Jobseeker(1, "ADMIN", "a@a.com", "Password1"));
+        } catch (EmailAlreadyExistsException e) {
+            e.getMessage();
+        }
+
+        try {
+            DatabaseBonus.addBonus(new Bonus(DatabaseBonus.getLastId()+1, "REFCODE", 5, 20, true));
+        } catch (ReferralCodeAlreadyExistsException e) {
             e.getMessage();
         }
 

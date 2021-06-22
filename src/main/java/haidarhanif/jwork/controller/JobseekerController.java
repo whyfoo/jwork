@@ -24,18 +24,27 @@ public class JobseekerController {
         return jobseeker;
     }
 
+    @RequestMapping(value = "/remove/{id}", method = RequestMethod.DELETE)
+    public void removeJobseeker(@PathVariable int id) {
+            DatabaseJobseekerPostgre.removeJobseeker(id);
+    }
+
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public Jobseeker registerJobseeker(@RequestParam(value="name") String name,
                                   @RequestParam(value="email") String email,
                                   @RequestParam(value="password") String password)
     {
-        Jobseeker jobseeker = new Jobseeker(DatabaseJobSeeker.getLastId()+1, name, email, password);
-        try {
-            DatabaseJobSeeker.addJobseeker(jobseeker);
-        } catch (EmailAlreadyExistsException e) {
-            e.getMessage();
+        Jobseeker jobseeker = new Jobseeker(DatabaseJobseekerPostgre.getLastJobseekerId()+1, name, email, password);
+        if (jobseeker.getEmail().length() == 0) {
             return null;
         }
+        try {
+            DatabaseJobseekerPostgre.insertJobseeker(jobseeker);
+        } catch (EmailAlreadyExistsException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+
         return jobseeker;
     }
 
@@ -43,6 +52,7 @@ public class JobseekerController {
     public Jobseeker loginJobseeker(@RequestParam(value = "email") String email,
                                     @RequestParam(value="password") String password)
     {
-        return DatabaseJobSeeker.jobseekerLogin(email, password);
+//        return DatabaseJobSeeker.jobseekerLogin(email, password);
+        return DatabaseJobseekerPostgre.jobseekerLogin(email,password);
     }
 }
