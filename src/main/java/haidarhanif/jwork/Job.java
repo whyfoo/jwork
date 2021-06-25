@@ -1,4 +1,7 @@
 package haidarhanif.jwork;
+
+import haidarhanif.jwork.enumerated.JobCategory;
+
 /**
  * Class of Job
  *

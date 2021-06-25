@@ -1,4 +1,6 @@
 package haidarhanif.jwork;
+import haidarhanif.jwork.enumerated.PaymentType;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 

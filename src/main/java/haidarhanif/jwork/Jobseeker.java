@@ -11,6 +11,7 @@ import java.text.SimpleDateFormat;
  * @version 10-04-2021
  */
 public class Jobseeker
+
 {
     // variable instance
     private int id;

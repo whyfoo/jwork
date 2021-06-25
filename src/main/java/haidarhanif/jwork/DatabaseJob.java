@@ -1,4 +1,7 @@
 package haidarhanif.jwork;
+import haidarhanif.jwork.enumerated.JobCategory;
+import haidarhanif.jwork.exception.JobNotFoundException;
+
 import java.util.ArrayList;
 
 /**

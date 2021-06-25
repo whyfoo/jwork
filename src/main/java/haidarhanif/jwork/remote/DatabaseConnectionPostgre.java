@@ -1,15 +1,13 @@
-package haidarhanif.jwork;
+package haidarhanif.jwork.remote;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DatabaseConnectionPostgre {
 
     public static Connection connection(){
         Connection c = null;
-        Statement stat = null;
         String db_name = "jwork";
         String db_user = "postgres";
         String db_password = "postgres";

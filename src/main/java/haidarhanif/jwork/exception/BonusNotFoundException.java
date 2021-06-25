@@ -1,4 +1,4 @@
-package haidarhanif.jwork;
+package haidarhanif.jwork.exception;
 public class BonusNotFoundException extends Exception {
     private int bonus_error;
 

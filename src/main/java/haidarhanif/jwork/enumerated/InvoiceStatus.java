@@ -1,4 +1,4 @@
-package haidarhanif.jwork;
+package haidarhanif.jwork.enumerated;
 /**
  * Enumeration class JobCategory
  *

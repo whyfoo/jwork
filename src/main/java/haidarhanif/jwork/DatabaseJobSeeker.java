@@ -1,4 +1,7 @@
 package haidarhanif.jwork;
+import haidarhanif.jwork.exception.EmailAlreadyExistsException;
+import haidarhanif.jwork.exception.JobSeekerNotFoundException;
+
 import java.util.ArrayList;
 
 /**

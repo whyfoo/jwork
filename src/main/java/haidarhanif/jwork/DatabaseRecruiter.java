@@ -1,4 +1,6 @@
 package haidarhanif.jwork;
+import haidarhanif.jwork.exception.RecruiterNotFoundException;
+
 import java.util.ArrayList;
 
 /**

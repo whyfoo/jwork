@@ -1,4 +1,7 @@
-package haidarhanif.jwork;
+package haidarhanif.jwork.exception;
+
+import haidarhanif.jwork.Invoice;
+
 public class OngoingInvoiceAlreadyExistsException extends Exception {
     private Invoice invoice_error;
 

@@ -1,4 +1,7 @@
-package haidarhanif.jwork;
+package haidarhanif.jwork.exception;
+
+import haidarhanif.jwork.Jobseeker;
+
 public class EmailAlreadyExistsException extends Exception {
     private Jobseeker jobseeker_error;
 

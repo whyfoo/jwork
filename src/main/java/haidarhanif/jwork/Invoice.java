@@ -1,5 +1,7 @@
 package haidarhanif.jwork;
-import java.lang.reflect.Array;
+import haidarhanif.jwork.enumerated.InvoiceStatus;
+import haidarhanif.jwork.enumerated.PaymentType;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;

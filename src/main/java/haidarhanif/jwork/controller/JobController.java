@@ -1,6 +1,10 @@
 package haidarhanif.jwork.controller;
 
 import haidarhanif.jwork.*;
+import haidarhanif.jwork.enumerated.JobCategory;
+import haidarhanif.jwork.exception.JobNotFoundException;
+import haidarhanif.jwork.remote.DatabaseJobPostgre;
+import haidarhanif.jwork.remote.DatabaseRecruiterPostgre;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -12,7 +16,7 @@ public class JobController {
     @RequestMapping("")
     public ArrayList<Job> getAllJob()
     {
-        return DatabaseJob.getJobDatabase();
+        return DatabaseJobPostgre.getAllJob();
     }
 
     @RequestMapping("/{id}")
@@ -20,10 +24,9 @@ public class JobController {
     {
         Job job = null;
         try {
-            job = DatabaseJob.getJobById(id);
-        } catch (JobNotFoundException e) {
+            job = DatabaseJobPostgre.getJobById(id);
+        } catch (JobNotFoundException e){
             e.getMessage();
-            return null;
         }
         return job;
     }
@@ -31,31 +34,37 @@ public class JobController {
     @RequestMapping("/recruiter/{recruiterId}")
     public ArrayList<Job> getJobByRecruiter(@PathVariable int recruiterId)
     {
-        return DatabaseJob.getJobByRecruiter(recruiterId);
+        return DatabaseJobPostgre.getJobByRecruiter(recruiterId);
     }
 
     @RequestMapping("/category/{category}")
     public ArrayList<Job> getJobByCategory(@PathVariable JobCategory category)
     {
-        return DatabaseJob.getJobByCategory(category);
+        return DatabaseJobPostgre.getJobByCategory(category);
     }
 
-    @RequestMapping(value = "", method = RequestMethod.POST)
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
     public Job addJob(@RequestParam(value="name") String name,
                       @RequestParam(value="recruiterId") int recruiterId,
                       @RequestParam(value="fee") int fee,
                       @RequestParam(value="category") JobCategory category)
     {
-        Recruiter recruiter = null;
-        try {
-            recruiter = DatabaseRecruiter.getRecruiterById(recruiterId);
-        } catch (RecruiterNotFoundException e) {
-            e.getMessage();
-            return null;
-        }
+        Recruiter recruiter = DatabaseRecruiterPostgre.getRecruiterById(recruiterId);
+        Job job = new Job(DatabaseJobPostgre.getLastId()+1, name, recruiter, fee, category);
 
-        Job job = new Job(DatabaseJob.getLastId()+1, name, recruiter, fee, category);
-        DatabaseJob.addJob(job);
+        DatabaseJobPostgre.addJob(job);
         return job;
+    }
+
+    @RequestMapping(value = "/remove", method = RequestMethod.DELETE)
+    public boolean removeJob(@RequestParam(value="id") int id)
+    {
+        try {
+            DatabaseJobPostgre.removeJob(id);
+        } catch (JobNotFoundException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+        return true;
     }
 }

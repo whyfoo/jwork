@@ -1,6 +1,14 @@
 package haidarhanif.jwork.controller;
 
 import haidarhanif.jwork.*;
+import haidarhanif.jwork.enumerated.InvoiceStatus;
+import haidarhanif.jwork.exception.InvoiceNotFoundException;
+import haidarhanif.jwork.exception.JobNotFoundException;
+import haidarhanif.jwork.exception.JobSeekerNotFoundException;
+import haidarhanif.jwork.exception.OngoingInvoiceAlreadyExistsException;
+import haidarhanif.jwork.remote.DatabaseBonusPostgre;
+import haidarhanif.jwork.remote.DatabaseJobPostgre;
+import haidarhanif.jwork.remote.DatabaseJobseekerPostgre;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -21,7 +29,7 @@ public class InvoiceController {
         try {
             invoice = DatabaseInvoice.getInvoiceById(id);
         } catch (InvoiceNotFoundException e) {
-            e.getMessage();
+            System.out.println(e.getMessage());
             return null;
         }
         return invoice;
@@ -42,7 +50,7 @@ public class InvoiceController {
             DatabaseInvoice.getInvoiceById(id).setInvoiceStatus(status);
             invoice = DatabaseInvoice.getInvoiceById(id);
         } catch (InvoiceNotFoundException e) {
-            e.getMessage();
+            System.out.println(e.getMessage());
             return null;
         }
 
@@ -55,7 +63,7 @@ public class InvoiceController {
         try{
             return DatabaseInvoice.removeInvoice(id);
         } catch (InvoiceNotFoundException e) {
-            e.getMessage();
+            System.out.println(e.getMessage());
             return false;
         }
     }
@@ -70,25 +78,25 @@ public class InvoiceController {
         for(int id : jobIdList)
         {
             try {
-                Job job = DatabaseJob.getJobById(id);
+                Job job = DatabaseJobPostgre.getJobById(id);
                 jobAL.add(job);
             } catch (JobNotFoundException e) {
-                e.getMessage();
+                System.out.println(e.getMessage());
                 continue;
             }
         }
 
-        try {
-            bank = new BankPayment(DatabaseInvoice.getLastId()+1, jobAL, DatabaseJobSeeker.getJobseekerById(jobseekerId), adminFee);
+        try{
+            bank = new BankPayment(DatabaseInvoice.getLastId()+1, jobAL, DatabaseJobseekerPostgre.getJobseekerById(jobseekerId), adminFee);
         } catch (JobSeekerNotFoundException e) {
-            e.getMessage();
+            System.out.println(e.getMessage());
             return null;
         }
         
         try {
             DatabaseInvoice.addInvoice(bank);
         } catch (OngoingInvoiceAlreadyExistsException e) {
-            e.getMessage();
+            System.out.println(e.getMessage());
             return null;
         }
         
@@ -106,18 +114,18 @@ public class InvoiceController {
         for(int id : jobIdList)
         {
             try {
-                Job job = DatabaseJob.getJobById(id);
+                Job job = DatabaseJobPostgre.getJobById(id);
                 jobAL.add(job);
             } catch (JobNotFoundException e) {
-                e.getMessage();
+                System.out.println(e.getMessage());
                 continue;
             }
         }
 
         try {
-            eWallet = new EwalletPayment(DatabaseInvoice.getLastId()+1, jobAL, DatabaseJobSeeker.getJobseekerById(jobseekerId), DatabaseBonus.getBonusByReferralCode(referralCode));
+            eWallet = new EwalletPayment(DatabaseInvoice.getLastId()+1, jobAL, DatabaseJobseekerPostgre.getJobseekerById(jobseekerId), DatabaseBonusPostgre.getBonusByReferralCode(referralCode));
         } catch (JobSeekerNotFoundException e) {
-            e.getMessage();
+            System.out.println(e.getMessage());
             return null;
         }
 
@@ -126,7 +134,7 @@ public class InvoiceController {
         try {
             DatabaseInvoice.addInvoice(eWallet);
         } catch (OngoingInvoiceAlreadyExistsException e) {
-            e.getMessage();
+            System.out.println(e.getMessage());
             return null;
         }
 

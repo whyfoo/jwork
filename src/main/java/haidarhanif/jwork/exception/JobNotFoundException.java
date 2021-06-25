@@ -1,4 +1,4 @@
-package haidarhanif.jwork;
+package haidarhanif.jwork.exception;
 public class JobNotFoundException extends Exception {
     private int job_error;
 

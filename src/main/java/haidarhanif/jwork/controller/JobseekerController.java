@@ -1,6 +1,9 @@
 package haidarhanif.jwork.controller;
 
 import haidarhanif.jwork.*;
+import haidarhanif.jwork.exception.EmailAlreadyExistsException;
+import haidarhanif.jwork.exception.JobSeekerNotFoundException;
+import haidarhanif.jwork.remote.DatabaseJobseekerPostgre;
 import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/jobseeker")
@@ -34,12 +37,12 @@ public class JobseekerController {
                                   @RequestParam(value="email") String email,
                                   @RequestParam(value="password") String password)
     {
-        Jobseeker jobseeker = new Jobseeker(DatabaseJobseekerPostgre.getLastJobseekerId()+1, name, email, password);
+        Jobseeker jobseeker = new Jobseeker(DatabaseJobseekerPostgre.getLastId()+1, name, email, password);
         if (jobseeker.getEmail().length() == 0) {
             return null;
         }
         try {
-            DatabaseJobseekerPostgre.insertJobseeker(jobseeker);
+            DatabaseJobseekerPostgre.addJobseeker(jobseeker);
         } catch (EmailAlreadyExistsException e) {
             System.out.println(e.getMessage());
             return null;

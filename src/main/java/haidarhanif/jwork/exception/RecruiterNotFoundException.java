@@ -1,4 +1,4 @@
-package haidarhanif.jwork;
+package haidarhanif.jwork.exception;
 public class RecruiterNotFoundException extends Exception{
     private int recruiter_error;
 

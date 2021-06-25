@@ -1,4 +1,7 @@
-package haidarhanif.jwork;
+package haidarhanif.jwork.exception;
+
+import haidarhanif.jwork.Bonus;
+
 public class ReferralCodeAlreadyExistsException extends Exception {
     private Bonus referral_error;
 
