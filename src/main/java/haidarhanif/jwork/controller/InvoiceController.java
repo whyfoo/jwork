@@ -122,11 +122,20 @@ public class InvoiceController {
             }
         }
 
-        try {
-            eWallet = new EwalletPayment(DatabaseInvoice.getLastId()+1, jobAL, DatabaseJobseekerPostgre.getJobseekerById(jobseekerId), DatabaseBonusPostgre.getBonusByReferralCode(referralCode));
-        } catch (JobSeekerNotFoundException e) {
-            System.out.println(e.getMessage());
-            return null;
+        if (referralCode.equals("")){
+            try {
+                eWallet = new EwalletPayment(DatabaseInvoice.getLastId() + 1, jobAL, DatabaseJobseekerPostgre.getJobseekerById(jobseekerId));
+            } catch (JobSeekerNotFoundException e) {
+                System.out.println(e.getMessage());
+                return null;
+            }
+        } else {
+            try {
+                eWallet = new EwalletPayment(DatabaseInvoice.getLastId() + 1, jobAL, DatabaseJobseekerPostgre.getJobseekerById(jobseekerId), DatabaseBonusPostgre.getBonusByReferralCode(referralCode));
+            } catch (JobSeekerNotFoundException e) {
+                System.out.println(e.getMessage());
+                return null;
+            }
         }
 
         eWallet.setTotalFee();
